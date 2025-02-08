@@ -3,8 +3,16 @@ import { useState, useEffect } from "react";
 import { createClient } from "@/supabase/client";
 import Image from "next/image";
 
+interface UsersArr {
+  id: number;
+  name: string;
+  age: number;
+  email: string;
+  logo: string;
+}
+
 const Page = () => {
-  const [users, setUsers] = useState<any[]>([]);
+  const [users, setUsers] = useState<UsersArr[]>([]);
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [email, setEmail] = useState("");
@@ -188,7 +196,7 @@ const Page = () => {
                 </td>
               </tr>
             ) : (
-              users.map((user) => (
+              users.map((user: any) => (
                 <tr
                   key={user.id}
                   className="border-b hover:bg-gray-100 transition"
