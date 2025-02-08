@@ -16,7 +16,7 @@ const Page = () => {
 
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, [users]);
 
   const fetchUsers = async () => {
     setLoading(true);
