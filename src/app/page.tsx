@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { createClient } from "@/supabase/client";
+import Image from "next/image";
 
 const Page = () => {
   const [users, setUsers] = useState<any[]>([]);
@@ -54,7 +55,6 @@ const Page = () => {
     setLoading(true);
 
     if (edit && editId !== null) {
-      // Yangilash
       const { error } = await supabase
         .from("UsersInfo1")
         .update({ Logo: logo, Name: name, Age: age, Email: email })
@@ -66,7 +66,6 @@ const Page = () => {
         fetchUsers();
       }
     } else {
-      // Yangi qo‘shish
       const { error } = await supabase
         .from("UsersInfo1")
         .insert([{ Logo: logo, Name: name, Age: age, Email: email }]);
@@ -117,14 +116,12 @@ const Page = () => {
             className="w-40 h-40 border-2 border-dashed border-gray-400 rounded-full flex justify-center items-center text-gray-500 hover:bg-gray-100 transition cursor-pointer"
           >
             {logo ? (
-              <img
-                width={"100%"}
+              <Image
                 src={
                   "https://dijgblooocqejrsjbsto.supabase.co/storage/v1/object/public/Logotip/" +
                   logo
                 }
-                alt="Logo"
-                className="w-10 h-10 rounded-full"
+                alt="Error"
               />
             ) : (
               "Upload Logo"
@@ -196,12 +193,12 @@ const Page = () => {
                 >
                   <td className="p-3 text-center">
                     {user.Logo ? (
-                      <img
+                      <Image
                         src={
                           "https://dijgblooocqejrsjbsto.supabase.co/storage/v1/object/public/Logotip/" +
                           user.Logo
                         }
-                        alt="Logo"
+                        alt="User logo"
                         className="w-10 h-10 rounded-full"
                       />
                     ) : (
