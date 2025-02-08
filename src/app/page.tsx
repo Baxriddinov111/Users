@@ -16,7 +16,7 @@ const Page = () => {
 
   useEffect(() => {
     fetchUsers();
-  }, [users]);
+  }, []);
 
   const fetchUsers = async () => {
     setLoading(true);
@@ -122,6 +122,8 @@ const Page = () => {
                   logo
                 }
                 alt="Error"
+                width={300}
+                height={300}
               />
             ) : (
               "Upload Logo"
@@ -199,7 +201,9 @@ const Page = () => {
                           user.Logo
                         }
                         alt="User logo"
-                        className="w-10 h-10 rounded-full"
+                        width={50}
+                        height={50}
+                        className="rounded-full"
                       />
                     ) : (
                       "📷"
